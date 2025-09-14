@@ -21,7 +21,7 @@ runs:
       shell: bash
 
     - name: "Install to /opt/wasi-sdk/"
-      run: cp -r /tmp/untarred/wasi-sdk-"$SDK_VERSION"-x86_64-linux/* /opt/wasi-sdk/
+      run: mkdir /opt/wasi-sdk && cp -r /tmp/untarred/wasi-sdk-"$SDK_VERSION"-x86_64-linux/* /opt/wasi-sdk/
       shell: bash
       env:
         SDK_VERSION: ${{ inputs.sdk-version }}
