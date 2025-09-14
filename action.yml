@@ -1,0 +1,31 @@
+---
+name: "Setup wasi-sdk"
+description: "Downloads and installs WebAssembly/wasi-sdk to /opt/wasi-sdk/"
+author: "redbluegreenhat"
+inputs:
+  sdk-version:
+    description: "Version of the SDK to install"
+    required: true
+    default: "27.0"
+runs:
+  using: "composite"
+  steps:
+    - name: "Download SDK"
+      run: wget https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-27/wasi-sdk-"$SDK_VERSION"-x86_64-linux.tar.gz -O /tmp/wasi-sdk.tar.gz
+      shell: bash
+      env:
+        SDK_VERSION: ${{ inputs.sdk-version }}
+
+    - name: "Untar SDK"
+      run: mkdir /tmp/untarred && tar -xzvf /tmp/wasi-sdk.tar.gz -C /tmp/untarred
+      shell: bash
+
+    - name: "Install to /opt/wasi-sdk/"
+      run: cp -r /tmp/untarred/wasi-sdk-"$SDK_VERSION"-x86_64-linux/* /opt/wasi-sdk/
+      shell: bash
+      env:
+        SDK_VERSION: ${{ inputs.sdk-version }}
+
+    - name: "Cleanup temporary files used during installation"
+      run: rm -rf /tmp/untarred && rm /tmp/wasi-sdk.tar.gz
+      shell: bash
