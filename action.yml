@@ -6,12 +6,12 @@ inputs:
   sdk-version:
     description: "Version of the SDK to install"
     required: true
-    default: "27.0"
+    default: "27"
 runs:
   using: "composite"
   steps:
     - name: "Download SDK"
-      run: wget https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-27/wasi-sdk-"$SDK_VERSION"-x86_64-linux.tar.gz -O /tmp/wasi-sdk.tar.gz
+      run: wget --no-progress https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-"$SDK_VERSION"/wasi-sdk-"$SDK_VERSION".0-x86_64-linux.tar.gz -O /tmp/wasi-sdk.tar.gz
       shell: bash
       env:
         SDK_VERSION: ${{ inputs.sdk-version }}
