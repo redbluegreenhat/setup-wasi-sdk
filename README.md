@@ -12,7 +12,7 @@ This action itself is licensed under the Unlicense. Keep in mind wasi-sdk and it
     # Version of the SDK to install.
     # Optional, but it is highly recommended you set this in your workflow explicitly
     # By default, download and installs wasi-sdk-27
-    sdk-version: 27
+    sdk-version: "27"
 ```
 
 If you want an example of it being used, check out the workflow for my [wasi-blog](https://github.com/redbluegreenhat/wasi-blog/blob/main/.github/workflows/main.yml) repository.
