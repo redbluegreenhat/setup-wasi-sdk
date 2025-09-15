@@ -7,7 +7,7 @@ This action itself is licensed under the Unlicense. Keep in mind wasi-sdk and it
 ## Usage
 
 ```yaml
-- uses: redbluegreenhat/setup-wasi-sdk@main
+- uses: redbluegreenhat/setup-wasi-sdk@v1
   with:
     # Version of the SDK to install.
     # Optional, but it is highly recommended you set this in your workflow explicitly
